@@ -1,7 +1,8 @@
-package com.miage.altea.tp.pokemon_type_api.repository;
+package com.miage.altea.tp.pokemon_type_api.repository.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.miage.altea.tp.pokemon_type_api.bo.PokemonType;
+import com.miage.altea.tp.pokemon_type_api.repository.PokemonTypeRepository;
 import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
