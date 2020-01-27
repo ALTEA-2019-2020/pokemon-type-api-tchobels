@@ -11,4 +11,6 @@ public interface PokemonTypeRepository {
     PokemonType findPokemonTypeByName(String name);
 
     List<PokemonType> findAllPokemonType();
+
+    List<PokemonType> findPokemonTypeByType(List<String> types);
 }

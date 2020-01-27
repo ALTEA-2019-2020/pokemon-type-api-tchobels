@@ -53,6 +53,7 @@ class PokemonTypeControllerTest {
         assertArrayEquals(new String[]{"/"}, getMapping.value());
     }
 
+
     @Test
     void getPokemonType_shouldCallTheService() {
         var service = mock(PokemonTypeService.class);
