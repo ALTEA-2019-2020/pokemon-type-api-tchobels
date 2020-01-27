@@ -1,19 +1,21 @@
 package com.miage.altea.tp.pokemon_type_api.repository;
 
-import com.miage.altea.tp.pokemon_type_api.repository.PokemonTypeRepository;
 import com.miage.altea.tp.pokemon_type_api.repository.impl.PokemonTypeRepositoryImpl;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-class PokemonTypeRepositoryImplTest {
+public class PokemonTypeRepositoryImplTest {
 
     private PokemonTypeRepositoryImpl repository = new PokemonTypeRepositoryImpl();
 
     @Test
-    void applicationContext_shouldLoadPokemonRepository(){
+    public void applicationContext_shouldLoadPokemonRepository(){
 
         var context = new AnnotationConfigApplicationContext("com.miage.altea.tp.pokemon_type_api.repository");
         var repoByName = context.getBean("pokemonTypeRepositoryImpl");
@@ -25,7 +27,7 @@ class PokemonTypeRepositoryImplTest {
     }
 
     @Test
-    void findPokemonTypeById_with25_shouldReturnPikachu() {
+    public void findPokemonTypeById_with25_shouldReturnPikachu() {
         var pikachu = repository.findPokemonTypeById(25);
         assertNotNull(pikachu);
         assertEquals("pikachu", pikachu.getName());
@@ -33,7 +35,7 @@ class PokemonTypeRepositoryImplTest {
     }
 
     @Test
-    void findPokemonTypeById_with145_shouldReturnZapdos() {
+    public void findPokemonTypeById_with145_shouldReturnZapdos() {
         var zapdos = repository.findPokemonTypeById(145);
         assertNotNull(zapdos);
         assertEquals("zapdos", zapdos.getName());
@@ -41,7 +43,7 @@ class PokemonTypeRepositoryImplTest {
     }
 
     @Test
-    void findPokemonTypeByName_withEevee_shouldReturnEevee() {
+    public void findPokemonTypeByName_withEevee_shouldReturnEevee() {
         var eevee = repository.findPokemonTypeByName("eevee");
         assertNotNull(eevee);
         assertEquals("eevee", eevee.getName());
@@ -49,7 +51,7 @@ class PokemonTypeRepositoryImplTest {
     }
 
     @Test
-    void findPokemonTypeByName_withMewTwo_shouldReturnMewTwo() {
+    public void findPokemonTypeByName_withMewTwo_shouldReturnMewTwo() {
         var mewtwo = repository.findPokemonTypeByName("mewtwo");
         assertNotNull(mewtwo);
         assertEquals("mewtwo", mewtwo.getName());
@@ -57,10 +59,28 @@ class PokemonTypeRepositoryImplTest {
     }
 
     @Test
-    void findAllPokemonType_shouldReturn151Pokemons() {
+    public void findAllPokemonType_shouldReturn151Pokemons() {
         var pokemons = repository.findAllPokemonType();
         assertNotNull(pokemons);
         assertEquals(151, pokemons.size());
     }
 
+    @Test
+    public void findPokemonTypeByTypes_withElec_shouldReturnListWith9Pokemon_WithBugPoisoned_shouldReturnListWith5Pokemon() {
+        var typeElectric = new ArrayList<String>();
+        typeElectric.add("electric");
+
+        var typeBugPoison = new ArrayList<String>();
+        typeBugPoison.add("bug");
+        typeBugPoison.add("poison");
+
+        var pokemonElecList = repository.findPokemonTypeByType(typeElectric);
+        assertNotNull(pokemonElecList);
+        Assert.assertEquals(9,pokemonElecList.size());
+
+        var pokemonBugPoison = repository.findPokemonTypeByType(typeBugPoison);
+        assertNotNull(pokemonBugPoison);
+        Assert.assertEquals(5,pokemonBugPoison.size());
+
+    }
 }

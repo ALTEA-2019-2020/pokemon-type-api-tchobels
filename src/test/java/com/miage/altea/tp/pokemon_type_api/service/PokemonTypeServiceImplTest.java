@@ -6,6 +6,8 @@ import com.miage.altea.tp.pokemon_type_api.service.impl.PokemonTypeServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.mock;
@@ -59,5 +61,24 @@ public class PokemonTypeServiceImplTest {
         pokemonTypeService.getPokemonType("zapdos");
 
         verify(pokemonTypeRepository).findPokemonTypeByName("zapdos");
+    }
+
+    @Test
+    void pokemonTypeRepository_shouldBeCalled_whenFindByTypes() {
+        var pokemonTypeRepository = mock(PokemonTypeRepository.class);
+        var pokemonTypeService = new PokemonTypeServiceImpl(pokemonTypeRepository);
+
+        var typeElectric = new ArrayList<String>();
+        typeElectric.add("electric");
+
+        var typeBugPoison = new ArrayList<String>();
+        typeBugPoison.add("bug");
+        typeBugPoison.add("poison");
+
+        pokemonTypeService.getPokemonByTypes(typeElectric);
+        pokemonTypeService.getPokemonByTypes(typeBugPoison);
+
+        verify(pokemonTypeRepository).findPokemonTypeByType(typeElectric);
+        verify(pokemonTypeRepository).findPokemonTypeByType(typeBugPoison);
     }
 }
