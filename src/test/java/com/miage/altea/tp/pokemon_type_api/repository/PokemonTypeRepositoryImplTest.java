@@ -2,7 +2,7 @@ package com.miage.altea.tp.pokemon_type_api.repository;
 
 import com.miage.altea.tp.pokemon_type_api.repository.impl.PokemonTypeRepositoryImpl;
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.ArrayList;
