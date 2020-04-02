@@ -1,4 +1,4 @@
-### Trainer API
+### POKEMON TYPE API
 
 Implémentation de l'API POKEMON TYPE
 
