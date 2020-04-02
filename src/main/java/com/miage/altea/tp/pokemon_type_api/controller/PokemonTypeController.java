@@ -29,7 +29,7 @@ class PokemonTypeController {
     }
 
     @GetMapping(value = "/", params = "types")
-    List<PokemonType> getPokemonTypeFromTypes(@RequestParam("types") List<String> types){
+    List<PokemonType> getPokemonTypeFromTypes(@RequestParam("types") List<String> types) {
         return pokemonTypeService.getPokemonByTypes(types);
     }
 

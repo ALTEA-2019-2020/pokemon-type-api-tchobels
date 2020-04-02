@@ -15,7 +15,7 @@ public class TranslationRepositoryImplTest {
 
     @Test
     void getPokemonName_with1_inFrench_shouldReturnBulbizarre(){
-        var name = repository.getPokemonName(1, Locale.FRENCH);
+        var name = repository.getPokemonName(1, Locale.FRANCE);
         assertEquals("Bulbizarre", name);
     }
 

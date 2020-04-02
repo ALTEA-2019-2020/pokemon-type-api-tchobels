@@ -40,13 +40,13 @@ class PokemonTypeControllerIntegrationTest {
 
         assertNotNull(pikachu);
         assertEquals(25, pikachu.getId());
-        assertEquals("pikachu", pikachu.getName());
+        assertEquals("Pikachu", pikachu.getName());
         assertEquals(4, pikachu.getHeight());
     }
     @Test
     void getPokemon_withId1AndFrenchAcceptLanguage_shouldReturnBulbizarre() {
         var headers = new HttpHeaders();
-        headers.setAcceptLanguageAsLocales(List.of(Locale.FRENCH));
+        headers.setAcceptLanguageAsLocales(List.of(Locale.FRANCE));
 
         var httpRequest = new HttpEntity<>(headers);
 
